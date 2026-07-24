@@ -1,29 +1,49 @@
-# Customer Churn Analysis and Prediction
+## 📊 Customer Churn Analysis and Prediction
+
+An end-to-end data analysis and machine learning project that explores the factors associated with customer churn in a telecommunications company and develops classification models to identify customers who may be at risk of leaving.
+
+The project combines data cleaning, exploratory data analysis (EDA), visualization, feature engineering, and machine learning to generate actionable insights that can support proactive customer retention strategies.
+
+⸻
 
 ## 📌 Project Overview
 
-This project analyzes customer churn data from a telecommunications company to identify the key factors associated with customer attrition and develop machine learning models capable of predicting customers who are at risk of churning.
+Customer churn is a major challenge for subscription-based businesses. When customers leave, companies lose recurring revenue and often incur additional costs to acquire new customers.
 
-The project combines exploratory data analysis (EDA), data visualization, and machine learning to generate actionable business insights that can help improve customer retention.
+This project analyzes telecommunications customer data to:
 
----
+* Understand the key factors associated with customer churn.
+* Identify customer groups with higher churn risk.
+* Explore patterns in customer behavior and service usage.
+* Build machine learning models to predict potential churners.
+* Evaluate different classification thresholds and their impact on churn detection.
+* Translate analytical findings into actionable business recommendations.
+
+⸻
 
 ## 🎯 Business Problem
 
-Customer churn is a major challenge for subscription-based businesses. Losing customers can reduce revenue and increase the cost of acquiring new customers.
+The primary business question is:
 
-The objective of this project is to:
+Can customer data be used to identify customers who are more likely to churn, allowing the company to take proactive retention actions?
 
-* Understand the factors associated with customer churn.
-* Identify customer segments with higher churn risk.
-* Build a machine learning model to predict potential churners.
-* Provide actionable recommendations to improve customer retention.
+The analysis focuses on customer characteristics such as:
 
----
+* Contract type
+* Customer tenure
+* Internet service
+* Payment method
+* Monthly charges
+* Customer demographics
+* Additional services
+
+Understanding these relationships can help businesses prioritize retention efforts and focus resources on customers with a higher likelihood of leaving.
+
+⸻
 
 ## 📂 Dataset
 
-The dataset contains information about telecommunications customers, including:
+The dataset contains telecommunications customer information, including:
 
 * Customer demographics
 * Contract type
@@ -34,9 +54,9 @@ The dataset contains information about telecommunications customers, including:
 * Additional services
 * Churn status
 
-The target variable is **Churn**, which indicates whether a customer left the company.
+The target variable is Churn, which indicates whether a customer left the company.
 
----
+⸻
 
 ## 🛠️ Tools and Technologies
 
@@ -47,13 +67,13 @@ The target variable is **Churn**, which indicates whether a customer left the co
 * Scikit-learn
 * Jupyter Notebook
 * VS Code
-* GitHub
+* Git & GitHub
 
----
+⸻
 
 ## 🔍 Exploratory Data Analysis
 
-The exploratory analysis examined relationships between customer churn and several variables, including:
+The exploratory analysis examined the relationship between customer churn and several customer characteristics, including:
 
 * Contract type
 * Tenure
@@ -62,37 +82,74 @@ The exploratory analysis examined relationships between customer churn and sever
 * Payment method
 * Senior citizen status
 
-Several important patterns were identified.
+The analysis revealed several notable patterns that may help explain why certain customers are more likely to leave.
 
----
+⸻
 
 ## 📊 Key Findings
 
-### Contract Type
+1. Contract Type
 
-Month-to-month customers had the highest churn rate at approximately **42.71%**, compared with **11.27%** for one-year contracts and **2.83%** for two-year contracts.
+Customers on month-to-month contracts had the highest churn rate:
 
-### Internet Service
+Contract Type	Churn Rate
+Month-to-month	42.71%
+One year	11.27%
+Two year	2.83%
 
-Fiber optic customers had a churn rate of approximately **41.89%**, compared with **18.96%** for DSL customers and **7.40%** for customers without internet service.
+Customers with longer-term contracts were significantly less likely to churn than customers on month-to-month contracts.
 
-### Payment Method
+Business implication: Contract length appears to be strongly associated with customer retention.
 
-Customers using electronic checks had the highest churn rate at approximately **45.29%**.
+⸻
 
-### Senior Citizens
+2. Internet Service
 
-Senior citizens had a churn rate of approximately **41.68%**, compared with **23.61%** among non-senior customers.
+Fiber optic customers recorded a relatively high churn rate:
 
-### Customer Tenure
+Internet Service	Churn Rate
+Fiber optic	41.89%
+DSL	18.96%
+No internet service	7.40%
 
-Customers who churned had an average tenure of approximately **18 months**, compared with approximately **38 months** for customers who stayed.
+The higher churn rate among fiber optic customers may warrant further investigation into pricing, service quality, customer expectations, or other factors.
 
-### Monthly Charges
+⸻
 
-Customers who churned had higher average monthly charges of approximately **$74.44**, compared with **$61.27** for customers who stayed.
+3. Payment Method
 
----
+Customers using electronic checks had the highest observed churn rate at approximately 45.29%.
+
+This suggests that payment method may be associated with customer retention and deserves further investigation.
+
+⸻
+
+4. Senior Citizen Status
+
+Senior citizens had a churn rate of approximately 41.68%, compared with 23.61% among non-senior customers.
+
+This indicates that customer demographics may play a role in churn behavior and could be considered when designing targeted retention strategies.
+
+⸻
+
+5. Customer Tenure
+
+Customers who churned had an average tenure of approximately 18 months, compared with approximately 38 months for customers who stayed.
+
+This suggests that newer customers may be more vulnerable to churn, highlighting the importance of effective onboarding and early customer engagement.
+
+⸻
+
+6. Monthly Charges
+
+Customers who churned had higher average monthly charges:
+
+* Churned customers: approximately $74.44
+* Retained customers: approximately $61.27
+
+Higher monthly charges may be associated with increased churn risk, although this relationship may also be influenced by other factors such as contract type and service configuration.
+
+⸻
 
 ## 🤖 Machine Learning
 
@@ -101,79 +158,160 @@ Two classification models were developed and evaluated:
 1. Logistic Regression
 2. Random Forest
 
-The data was divided into:
+Data Preparation
 
-* **80% training data**
-* **20% testing data**
+The dataset was divided into:
 
-Categorical variables were converted into numerical features using one-hot encoding.
+* 80% training data
+* 20% testing data
 
----
+Categorical variables were converted into numerical representations using one-hot encoding before model training.
+
+The models were evaluated using:
+
+* Accuracy
+* Precision
+* Recall
+* F1-score
+
+Because the objective is to identify customers who may churn, recall is particularly important. A model that misses too many actual churners may reduce the effectiveness of a customer retention campaign.
+
+⸻
 
 ## 📈 Model Performance
 
-### Logistic Regression — 50% Threshold
+Logistic Regression — 50% Classification Threshold
 
-* Accuracy: **80.70%**
-* Churn Precision: **66%**
-* Churn Recall: **56%**
-* Churn F1-score: **61%**
+* Accuracy: 80.70%
+* Churn Precision: 66%
+* Churn Recall: 56%
+* Churn F1-score: 61%
 
-### Logistic Regression — 40% Threshold
+Logistic Regression — 40% Classification Threshold
 
-* Accuracy: **78.00%**
-* Churn Precision: **57%**
-* Churn Recall: **67%**
-* Churn F1-score: **61%**
+* Accuracy: 78.00%
+* Churn Precision: 57%
+* Churn Recall: 67%
+* Churn F1-score: 61%
 
-### Random Forest
+Random Forest
 
-* Accuracy: **77.43%**
-* Churn Precision: **57%**
-* Churn Recall: **64%**
-* Churn F1-score: **60%**
+* Accuracy: 77.43%
+* Churn Precision: 57%
+* Churn Recall: 64%
+* Churn F1-score: 60%
 
-The Logistic Regression model performed best overall in terms of accuracy and precision. However, lowering the classification threshold to 40% increased churn recall from **56% to 67%**, allowing the model to identify more customers who were actually at risk of churning.
+⸻
 
----
+## ⚖️ Classification Threshold Analysis
+
+The Logistic Regression model was evaluated using two different probability thresholds.
+
+At the standard 50% threshold, the model achieved:
+
+56% churn recall
+
+When the threshold was reduced to 40%, churn recall increased to:
+
+67% churn recall
+
+This means the model was able to identify a larger proportion of customers who actually churned, although this came with a reduction in precision and overall accuracy.
+
+For a customer retention campaign, the lower threshold may be preferable if the business is willing to contact more customers in exchange for identifying more potential churners.
+
+This demonstrates an important machine learning principle:
+
+The best classification threshold depends on the business objective and the relative cost of false positives and false negatives.
+
+⸻
+
+## 🏆 Model Selection
+
+Based on the evaluation results, Logistic Regression provided the strongest overall performance among the tested models.
+
+The model achieved the highest accuracy and precision at the 50% threshold, while lowering the threshold to 40% improved recall for the churn class.
+
+The appropriate threshold would ultimately depend on the company’s retention strategy and the cost of missing a potential churner versus contacting a customer who would not have churned.
+
+⸻
 
 ## 💡 Business Insights and Recommendations
 
-### 1. Encourage Long-Term Contracts
+1. Encourage Long-Term Contracts
 
-The company should encourage month-to-month customers to move to one-year or two-year contracts through discounts, incentives, or additional benefits.
+The company could encourage month-to-month customers to move to one-year or two-year contracts through:
 
-### 2. Focus on Early Customer Retention
+* Discounts
+* Loyalty incentives
+* Additional service benefits
+* Contract upgrade offers
 
-Customers with shorter tenure are more likely to churn. The company should strengthen onboarding and engagement during the early stages of the customer relationship.
+⸻
 
-### 3. Investigate Fiber Optic Churn
+2. Focus on Early Customer Retention
 
-The high churn rate among fiber optic customers should be investigated to determine whether pricing, service quality, or customer expectations contribute to the problem.
+Customers with shorter tenure showed higher churn tendencies.
 
-### 4. Review Electronic Check Customers
+The company could strengthen:
 
-The company should investigate why electronic-check customers have significantly higher churn rates and determine whether billing or payment-related issues contribute to customer attrition.
+* New customer onboarding
+* Early engagement campaigns
+* Customer education
+* First-year loyalty programs
 
-### 5. Support High-Risk Customer Segments
+⸻
 
-Targeted retention strategies should be developed for high-risk groups, including senior citizens and customers with higher monthly charges.
+3. Investigate Fiber Optic Churn
 
-### 6. Use Predictive Churn Modeling
+The relatively high churn rate among fiber optic customers should be investigated further.
 
-The machine learning model can be used to identify customers who are at increased risk of leaving, allowing the company to intervene before churn occurs.
+Potential areas to explore include:
 
----
+* Pricing
+* Service quality
+* Customer expectations
+* Technical support
+* Competitor offerings
+
+⸻
+
+4. Review Electronic Check Customers
+
+The high churn rate among electronic-check customers may indicate potential billing or payment-related issues.
+
+The company could investigate whether:
+
+* Payment processes are creating friction.
+* Customers using electronic checks have different demographic profiles.
+* Payment method is associated with other churn-related factors.
+
+⸻
+
+5. Develop Targeted Retention Strategies
+
+Customers identified as higher risk could receive targeted interventions such as:
+
+* Personalized offers
+* Loyalty incentives
+* Customer support outreach
+* Contract upgrade options
+* Service improvement offers
+
+⸻
+
+6. Use Predictive Churn Modeling
+
+The machine learning model can support proactive retention by identifying customers who are more likely to churn.
+
+A business could use these predictions to prioritize retention campaigns and allocate customer service resources more efficiently.
+
+⸻
 
 ## 📁 Project Structure
 
-```text
-telco-customer-churn-analysis/
+Customer-churn-prediction/
 │
-├── data/
-│   └── WA_Fn-UseC_-Telco-Customer-Churn.csv
-│
-├── images/
+├── Images/
 │   ├── customer_churn_distribution.png
 │   ├── churn_rate_by_payment_method.png
 │   ├── monthly_charges_by_churn.png
@@ -183,25 +321,63 @@ telco-customer-churn-analysis/
 │   ├── model_comparison.png
 │   └── top_churn_factors.png
 │
+├── WA_Fn-UseC_-Telco-Customer-Churn.csv
 ├── churn_analysis.ipynb
 ├── README.md
 └── requirements.txt
-```
 
----
+⸻
+
+## ▶️ How to Run the Project
+
+1. Clone the repository
+
+git clone https://github.com/Lamicrypto/Customer-churn-prediction.git
+
+2. Navigate to the project directory
+
+cd Customer-churn-prediction
+
+3. Install the required dependencies
+
+pip install -r requirements.txt
+
+4. Open the Jupyter Notebook
+
+Open:
+
+churn_analysis.ipynb
+
+Run the notebook cells sequentially to reproduce the analysis and model results.
+
+⸻
 
 ## 🏁 Conclusion
 
-This project demonstrates an end-to-end approach to customer churn analysis, from data cleaning and exploratory analysis to machine learning and business recommendations.
+This project demonstrates an end-to-end approach to customer churn analysis, combining data preparation, exploratory analysis, visualization, machine learning, and business interpretation.
 
-The analysis shows that factors such as contract type, tenure, internet service, payment method, and monthly charges are strongly associated with customer churn.
+The analysis identified several factors associated with customer churn, including:
 
-The final analysis demonstrates how machine learning can support proactive customer retention by identifying customers who may be at higher risk of leaving.
+* Contract type
+* Customer tenure
+* Internet service
+* Payment method
+* Monthly charges
 
----
+The machine learning analysis also demonstrated the importance of selecting an appropriate classification threshold based on business objectives.
+
+Overall, the project highlights how data analysis and predictive modeling can support proactive customer retention by helping businesses identify customers who may be at higher risk of leaving.
+
+⸻
 
 ## 👤 Author
 
-**Timothy Olamide Balogun**
+Timothy Olamide Balogun
 
-Data Analytics | Machine Learning | Python | AI
+AI & Machine Learning | Data Analysis | Python | SQL
+
+📧 Email: olapyperfx24@gmail.com
+
+🔗 GitHub: https://github.com/Lamicrypto
+
+💼 LinkedIn: https://www.linkedin.com/in/timothy-balogun-0a27192a2
